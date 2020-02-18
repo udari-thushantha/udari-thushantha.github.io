@@ -395,9 +395,27 @@ img.emoji {
 <source src="./wp-content/uploads/2020/02/Christina-Perri-A-Thousand-Years-Piano-Cello-Cover.mp3" type="audio/mp3" /> 
 </audio> -->
 <iframe src="/wp-content/uploads/2020/02/Christina-Perri-A-Thousand-Years-Piano-Cello-Cover.mp3"  allow="autoplay" id="audio" style="display:none"></iframe>
-<script>
+						<script>
 
-</script>
+							var idx = document.URL.indexOf('?');
+							//var params = {}; // simple js object
+							var params = {},
+									pairs = document.URL.split('?')
+											.pop()
+											.split('&');
+
+							for (var i = 0, p; i < pairs.length; i++) {
+								p = pairs[i].split('=');
+								params[ p[0] ] =  p[1];
+							}
+
+							document.getElementById("inviteename").innerHTML = unescape(params["name"]);
+							document.getElementById("tablenum").innerHTML = unescape(params["table"]);
+
+							//console.log(unescape(params["to"]));
+
+
+						</script>
 <script>
   var audio = document.getElementById("myaudio");
   audio.volume = 0.2;
